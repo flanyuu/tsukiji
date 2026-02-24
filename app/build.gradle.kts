@@ -72,6 +72,7 @@ dependencies {
     // the README installation instructions
     implementation(project(":maps-ktx"))
     implementation(project(":maps-utils-ktx"))
+    implementation("com.google.maps.android:android-maps-utils:3.8.2")
 }
 
 secrets {

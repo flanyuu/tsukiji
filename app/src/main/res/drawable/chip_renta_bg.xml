@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- chip_renta_bg.xml — fondo naranja para el chip "Renta" -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+
+    <solid android:color="#F5A623" />
+
+    <corners android:radius="4dp" />
+
+</shape>

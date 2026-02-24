@@ -44,7 +44,7 @@ class MyItemReader {
         for (i in 0 until array.length()) {
             var title: String? = null
             var snippet: String? = null
-            var zIndex: Double? = null
+            var category: String = "all"
             val `object` = array.getJSONObject(i)
             val lat = `object`.getDouble("lat")
             val lng = `object`.getDouble("lng")
@@ -54,10 +54,19 @@ class MyItemReader {
             if (!`object`.isNull("snippet")) {
                 snippet = `object`.getString("snippet")
             }
-            if (!`object`.isNull("zIndex")) {
-                zIndex = `object`.getDouble("zIndex")
+            // Lee la categoría desde el JSON si existe
+            if (!`object`.isNull("category")) {
+                category = `object`.getString("category")
             }
-            items.add(MyItem(LatLng(lat, lng), title, snippet, zIndex?.toFloat()))
+
+            items.add(
+                MyItem(
+                    LatLng(lat, lng),
+                    title ?: "",
+                    snippet ?: "",
+                    category
+                )
+            )
         }
         return items
     }

@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- item_propiedad.xml  — mismo estilo que las tarjetas de Guardados -->
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="10dp"
+    app:cardCornerRadius="8dp"
+    app:cardElevation="2dp"
+    app:cardBackgroundColor="#FFFFFF">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="12dp"
+        android:gravity="center_vertical">
+
+        <!-- Ícono de pin igual al de Guardados -->
+        <FrameLayout
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="#FFC84A"
+            android:layout_marginEnd="12dp">
+
+            <ImageView
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:src="@android:drawable/ic_menu_mylocation"
+                android:layout_gravity="center"
+                android:tint="#FFFFFF" />
+
+        </FrameLayout>
+
+        <!-- Contenido central -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <!-- Etiqueta "GUARDADO" / "PUBLICADO" -->
+            <TextView
+                android:id="@+id/tv_estado_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="PUBLICADO"
+                android:textColor="#F5A623"
+                android:textSize="10sp"
+                android:textStyle="bold"
+                android:letterSpacing="0.1" />
+
+            <!-- Nombre / título de la propiedad -->
+            <TextView
+                android:id="@+id/tv_nombre"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Propiedad #1"
+                android:textColor="#212121"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:layout_marginTop="1dp" />
+
+            <!-- Puntuación / precio -->
+            <TextView
+                android:id="@+id/tv_precio"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Precio: $25,000 MXN/mes"
+                android:textColor="#757575"
+                android:textSize="12sp"
+                android:layout_marginTop="1dp" />
+
+            <!-- Chip Renta o Venta — mismo estilo que el chip "Tienda/Restaurante" -->
+            <TextView
+                android:id="@+id/tv_tipo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:paddingStart="8dp"
+                android:paddingEnd="8dp"
+                android:paddingTop="2dp"
+                android:paddingBottom="2dp"
+                android:text="Renta 🏠"
+                android:textColor="#FFFFFF"
+                android:textSize="11sp"
+                android:background="@drawable/chip_renta_bg" />
+
+        </LinearLayout>
+
+        <!-- Botón eliminar (mismo ícono de papelera que en Guardados) -->
+        <ImageView
+            android:id="@+id/btn_eliminar"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@android:drawable/ic_menu_delete"
+            android:tint="#CCCCCC"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:layout_marginStart="8dp"
+            android:contentDescription="Eliminar propiedad" />
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

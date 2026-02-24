@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Android Maps KTX Demo</string>
-    <string name="snapshot">Snapshot</string>
-    <string name="animate_camera">Animate Camera</string>
+    <string name="app_name" translatable="false">Tsukiji DEMO MAPA</string>
+    <string name="animate_camera" translatable="false">intento de randomizador</string>
+    <string name="snapshot" translatable="false">vistamapa</string>
 </resources>
