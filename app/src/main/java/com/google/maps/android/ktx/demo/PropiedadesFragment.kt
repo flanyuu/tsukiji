@@ -4,16 +4,13 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.google.android.material.button.MaterialButtonToggleGroup
 import com.google.android.material.tabs.TabLayout
-import com.google.android.material.textfield.TextInputEditText
 
 data class PropiedadItem(
     val nombre: String,
@@ -75,7 +72,7 @@ class PropiedadesFragment : Fragment() {
         }
     }
 
-    private fun getFilteredList(): List<Propiedad> = when (currentFilter) {
+    private fun getFilteredList(): List<PropiedadItem> = when (currentFilter) {
         "Renta" -> propiedades.filter { it.tipo == "Renta" }
         "Venta" -> propiedades.filter { it.tipo == "Venta" }
         else -> propiedades.toList()
@@ -95,7 +92,6 @@ class PropiedadesFragment : Fragment() {
         val etPrecio = dialogView.findViewById<com.google.android.material.textfield.TextInputEditText>(R.id.et_precio)
         val btnPublicar = dialogView.findViewById<android.widget.Button>(R.id.btn_publicar)
 
-        // Seleccionar Venta por defecto
         toggleGroup.check(R.id.btn_venta)
 
         btnPublicar.setOnClickListener {
@@ -113,14 +109,14 @@ class PropiedadesFragment : Fragment() {
                 else -> "Venta"
             }
 
-            val nuevaPropiedad = Propiedad(
+            val nuevaPropiedad = PropiedadItem(
                 nombre = nombre,
                 direccion = direccion,
-                precio = "$${precio} MXN${if (tipoSeleccionado == "Renta") "/mes" else ""}",
+                precio = "$$precio MXN${if (tipoSeleccionado == "Renta") "/mes" else ""}",
                 tipo = tipoSeleccionado
             )
 
-            propiedades.add(0, nuevaPropiedad)
+            propiedades.add(index = 0, element = nuevaPropiedad)
             adapter.updateData(getFilteredList())
             dialog.dismiss()
             Toast.makeText(requireContext(), "Propiedad publicada", Toast.LENGTH_SHORT).show()
@@ -130,7 +126,7 @@ class PropiedadesFragment : Fragment() {
     }
 
     inner class PropiedadAdapter(
-        private var items: List<Propiedad>,
+        private var items: List<PropiedadItem>,
         private val onDelete: (Int) -> Unit
     ) : RecyclerView.Adapter<PropiedadAdapter.ViewHolder>() {
 
@@ -141,7 +137,7 @@ class PropiedadesFragment : Fragment() {
             val btnEliminar: ImageView = view.findViewById(R.id.btn_eliminar)
         }
 
-        fun updateData(newItems: List<Propiedad>) {
+        fun updateData(newItems: List<PropiedadItem>) {
             items = newItems
             notifyDataSetChanged()
         }
